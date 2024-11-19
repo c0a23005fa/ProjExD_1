@@ -15,6 +15,7 @@ def main():
     kk_img = pg.transform.flip(kk_img, True, False)  # こうかとんを左右反転させる
     kk_rct = kk_img.get_rect()
     kk_rct.center = 300, 200
+
     tmr = 0
     while True:
         for event in pg.event.get():
@@ -22,18 +23,22 @@ def main():
         key_lst = pg.key.get_pressed()
         print(key_lst[pg.K_UP], key_lst[pg.K_DOWN],
               key_lst[pg.K_LEFT], key_lst[pg.K_RIGHT])
+    
+        dx, dy = 0, 0
         
         if key_lst[pg.K_UP]:
-            kk_rct.move_ip(0, -1)
-        
+            dy -= 1
+            dx -= 1
         if key_lst[pg.K_DOWN]:
-            kk_rct.move_ip(0, +1)
-
+            dy += 1
+            dx -= 1
         if key_lst[pg.K_LEFT]:
-            kk_rct.move_ip(-1, 0)
-
+            dx -= 1
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip(+1, 0)    
+            dx += 1
+        if dx == 0 and dy == 0:
+            dx = -1
+        kk_rct.move_ip(dx, dy)
 
         x = -(tmr%3200)
         screen.blit(bg_img,  [x, 0])
@@ -50,4 +55,3 @@ if __name__ == "__main__":
     pg.init()
     main()
     pg.quit()
-    sys.exit()

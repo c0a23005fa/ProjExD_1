@@ -13,6 +13,8 @@ def main():
     bg_img2 = pg.transform.flip(bg_img, True, False)
     kk_img = pg.image.load("fig/3.png")  # こうかとん画像Surafaceを作成する
     kk_img = pg.transform.flip(kk_img, True, False)  # こうかとんを左右反転させる
+    kk_rct = kk_img.get_rect()
+    kk_rct.center = 300, 200
     tmr = 0
     while True:
         for event in pg.event.get():
@@ -22,7 +24,7 @@ def main():
         screen.blit(bg_img2, [x+1600, 0])
         screen.blit(bg_img,  [x+3200, 0])
         screen.blit(bg_img2, [x+4800, 0])
-        screen.blit(kk_img, [300, 200])  # screen Surfaceにこうかとん画像Surfaceを貼り付ける
+        screen.blit(kk_img, kk_rct)  # screen Surfaceにこうかとん画像Surfaceを貼り付ける
         pg.display.update()
         tmr += 1        
         clock.tick(200)

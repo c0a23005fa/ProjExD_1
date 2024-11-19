@@ -9,16 +9,16 @@ def main():
     pg.display.set_caption("はばたけ！こうかとん")
     screen = pg.display.set_mode((800, 600))
     clock  = pg.time.Clock()
-    bg_img = pg.image.load("fig/pg_bg.jpg")
-    kk_img = pg.image.load("fig/3.png")
-    kk_img = pg.transform.flip(kk_img, True, False)
+    bg_img = pg.image.load("fig/pg_bg.jpg")  # 背景画像Surfaceを作成する
+    kk_img = pg.image.load("fig/3.png")  # こうかとん画像Surafaceを作成する
+    kk_img = pg.transform.flip(kk_img, True, False)  # こうかとんを左右反転させる
     tmr = 0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [0, 0]) #screen Surfaceに背景画像Surfaceを
-        screen.blit(kk_img, [300, 200])
+        screen.blit(bg_img, [0, 0])  # screen Surfaceに背景画像Surfaceを貼り付ける
+        screen.blit(kk_img, [300, 200])  # screen Surfaceにこうかとん画像Surfaceを貼り付ける
         pg.display.update()
         tmr += 1        
         clock.tick(200)
